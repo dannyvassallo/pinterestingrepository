@@ -25,3 +25,17 @@ $jumbotron-bg: 					white;
 .remembermelabel label{
   padding-left: 0 !important;
 }
+
+.hello{
+  padding-top: 13px
+}
+
+.navbar-left{
+  max-width: 100%;
+}
+
+@media screen and (max-width: 770px) {
+  .hello{
+  padding-top: 6px
+}
+}
