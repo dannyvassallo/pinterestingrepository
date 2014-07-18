@@ -8,7 +8,11 @@
         <div class="panel-body">
         <p><%= pin.description %><br/></p>
         <p><strong><%= pin.user.name if pin.user %></strong></p>
-
+            <%= pluralize(pin.votes.count, "vote") %>
+            <% if user_signed_in? %>
+            <%= button_to '+1', upvote_pin_path(pin), method: :post %>
+            <!-- ADD THIS ", :remote => true" without quotes above after method: :post to stop livereload -->
+            <% end %>
         <% if pin.user == current_user %>
             <div class="actions">
               <%= link_to edit_pin_path(pin) do %>
@@ -19,9 +23,6 @@
             <span class="glyphicon glyphicon-trash"></span>
             Delete
             <% end %>
-            <%= pluralize(pin.votes.count, "vote") %>
-            <%= button_to '+1', upvote_pin_path(pin), method: :post %>
-            <!-- ADD THIS ", :remote => true" without quotes above after method: :post to stop livereload -->
           </div>
           <% end %>
 
