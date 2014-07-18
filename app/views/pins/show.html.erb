@@ -15,12 +15,12 @@
                 <span class="glyphicon glyphicon-edit"></span>
                 Edit
             <% end %>
-                    <% end %>
-            <%= pluralize(@pin.votes.count, "vote") %>
-            <% if user_signed_in? %>
+          <% end %>
+          <%= pluralize(@pin.votes.count, "vote") %>
+          <% if user_signed_in? %>
             <%= button_to '+1', upvote_pin_path(@pin), method: :post %>
             <!-- ADD THIS ", :remote => true" without quotes above after method: :post to stop livereload -->
-            <% end %>
+          <% end %>
       </div>
     </div>
   </div>
