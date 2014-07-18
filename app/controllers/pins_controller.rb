@@ -6,6 +6,7 @@ class PinsController < ApplicationController
  def index
    require 'will_paginate/array'
    @pins = Pin.all.sort_by { |pin| pin.votes.count }.reverse.paginate(:page => params[:page], :per_page => 25)
+   # MARK @pins = Pin.joins(:votes).group("votes.pin_id").all.paginate(:page => params[:page], :per_page => 25)
  end
 
 
@@ -50,6 +51,7 @@ class PinsController < ApplicationController
     @vote = Vote.where(:user_id => current_user.id, :pin_id => @pin.id).first
     @pin.votes.create({:user_id => current_user.id }) unless @vote
     redirect_to(pins_path)
+
   end
 
 
