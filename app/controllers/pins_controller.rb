@@ -4,7 +4,8 @@ class PinsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show] 
 
  def index
-   @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 25)
+   require 'will_paginate/array'
+   @pins = Pin.all.sort_by { |pin| pin.votes.count }.reverse.paginate(:page => params[:page], :per_page => 25)
  end
 
 
@@ -50,7 +51,7 @@ class PinsController < ApplicationController
     @pin.votes.create({:user_id => current_user.id }) unless @vote
     redirect_to(pins_path)
   end
-  
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
