@@ -19,6 +19,8 @@
             <span class="glyphicon glyphicon-trash"></span>
             Delete
             <% end %>
+            <%= pluralize(pin.votes.count, "vote") %>
+            <%= button_to '+1', upvote_pin_path(pin), method: :post %>
           </div>
           <% end %>
 

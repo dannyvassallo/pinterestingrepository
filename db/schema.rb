@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140717165114) do
+ActiveRecord::Schema.define(version: 20140718183136) do
 
   create_table "pins", force: true do |t|
     t.string   "description"
@@ -46,5 +46,15 @@ ActiveRecord::Schema.define(version: 20140717165114) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "votes", force: true do |t|
+    t.integer  "pin_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "votes", ["pin_id"], name: "index_votes_on_pin_id"
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id"
 
 end

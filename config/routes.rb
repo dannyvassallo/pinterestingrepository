@@ -1,5 +1,9 @@
 Pinteresting::Application.routes.draw do
-  resources :pins
+  resources :pins do
+  member do
+    post 'upvote'
+  end
+end
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   root "pins#index"

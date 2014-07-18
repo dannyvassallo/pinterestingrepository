@@ -44,6 +44,14 @@ class PinsController < ApplicationController
     redirect_to pins_url
   end
 
+  def upvote
+    @pin = Pin.find(params[:id])
+    @vote = Vote.where(:user_id => current_user.id, :pin_id => @pin.id).first
+    @pin.votes.create({:user_id => current_user.id }) unless @vote
+    redirect_to(pins_path)
+  end
+  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pin

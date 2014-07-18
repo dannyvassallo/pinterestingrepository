@@ -5,20 +5,21 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
-   has_many :pins
+  has_many :pins
+  has_many :votes, dependent: :destroy
 
-   validates :name, presence: true
-   validates_uniqueness_of :name
+  validates :name, presence: true
+  validates_uniqueness_of :name
 
 
-def self.from_omniauth(auth)
-  where(auth.slice(:provider, :uid)).first_or_create do |user|
-    user.email = auth.info.email
-    user.password = Devise.friendly_token[0,20]
-    user.name = auth.info.name   # assuming the user model has a name
-    #user.image = auth.info.image # assuming the user model has an image
+  def self.from_omniauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.name = auth.info.name   # assuming the user model has a name
+      #user.image = auth.info.image # assuming the user model has an image
+    end
   end
-end
 
   def self.new_with_session(params, session)
     super.tap do |user|
