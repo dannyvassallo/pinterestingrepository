@@ -1,5 +1,6 @@
 Pinteresting::Application.routes.draw do
   resources :pins do
+  resources :comments, :only => [:create]
   member do
     post 'upvote'
   end
