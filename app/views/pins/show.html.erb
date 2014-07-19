@@ -21,17 +21,17 @@
             <%= button_to '+1', upvote_pin_path(@pin), method: :post %>
             <!-- ADD THIS ", :remote => true" without quotes above after method: :post to stop livereload -->
              <h2>Comments</h2>
- <div id="comments">
-    <%= render :partial => @pin.comments %>
- </div>
+               <div id="comments">
+                  <%= render :partial => @pin.comments %>
+               </div>
 
- <%= form_for [@pin, Comment.new] do |f| %>
-  <p>
-      <%= f.label :body, "New comment" %></br>
-      <%= f.text_area :body %>
-  </p>
-  <p><%= f.submit "Add Comment" %><p>
- <% end %>
+               <%= form_for [@pin, Comment.new] do |f| %>
+                <p>
+                    <%= f.label :body, "New comment" %></br>
+                    <%= f.text_area :body %>
+                </p>
+                <p><%= f.submit "Add Comment" %><p>
+               <% end %>
           <% end %>
       </div>
     </div>
