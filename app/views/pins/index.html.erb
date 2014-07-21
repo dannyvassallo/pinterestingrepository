@@ -8,10 +8,9 @@
         <div class="panel-body">
         <p><%= pin.description %><br/></p>
         <p><strong><%= pin.user.name if pin.user %></strong></p>
-            <%= pluralize(pin.votes.count, "vote") %>
+            <p class="vote-text" data-vote="<%= pin.votes.count %>" > <span class="votenum"><%= pin.votes.count %></span> Votes</p>
             <% if user_signed_in? %>
-            <%= button_to '+1', upvote_pin_path(pin), method: :post %>
-            <!-- ADD THIS ", :remote => true" without quotes above after method: :post to stop livereload -->
+            <%= button_to '+1', upvote_pin_path(pin), method: :post, :remote => true, :class => "vote-btn" %>
             <% end %>
         <% if pin.user == current_user %>
             <div class="actions">
@@ -34,3 +33,4 @@
 <div class="center">
    <%= will_paginate @collection, renderer: BootstrapPagination::Rails %>
 </div>
+

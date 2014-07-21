@@ -17,3 +17,4 @@
 //= require_tree .
 //= require masonry/jquery.masonry
 //= require bootstrap
+//= require vote
