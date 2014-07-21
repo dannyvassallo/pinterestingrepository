@@ -34,6 +34,14 @@ $jumbotron-bg: 					white;
   max-width: 100%;
 }
 
+#comment_body{
+  width: 100%;
+  min-height: 100px;
+}
+
+.new_comment input{
+  float: right;
+}
 @media screen and (max-width: 770px) {
   .hello{
   padding-top: 6px
