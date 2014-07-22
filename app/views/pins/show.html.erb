@@ -18,6 +18,7 @@
       <p class="vote-text" data-vote="<%= @pin.votes.count %>" ><span class="votenum"><%= @pin.votes.count %></span> Votes</p>
       <% if user_signed_in? %>
         <%= button_to '+1', upvote_pin_path(@pin), method: :post, :remote => true, :class => "vote-btn2" %>
+      <div class="fb-share-button"></div>
       <% end %>
       <h2>Comments</h2>
         <div id="comments">
@@ -36,4 +37,3 @@
     </div>
   </div>
 </div>
-
