@@ -6,34 +6,34 @@
       <div class="panel-heading center">
         <%= image_tag @pin.image.url(:medium) %>
       </div>
-      <div class="panel-body">
-        <p><%= @pin.description %></p>
-        <p><strong><%= @pin.user.name if @pin.user %></strong></p>
-
-        <% if @pin.user == current_user %>
-              <%= link_to edit_pin_path(@pin) do %>
-                <span class="glyphicon glyphicon-edit"></span>
-                Edit
-            <% end %>
+    <div class="panel-body">
+      <p><%= @pin.description %></p>
+      <p><strong><%= @pin.user.name if @pin.user %></strong></p>
+      <% if @pin.user == current_user %>
+        <%= link_to edit_pin_path(@pin) do %>
+        <span class="glyphicon glyphicon-edit"></span>
+        Edit
+        <% end %>
+      <% end %>
+      <p class="vote-text" data-vote="<%= @pin.votes.count %>" ><span class="votenum"><%= @pin.votes.count %></span> Votes</p>
+      <% if user_signed_in? %>
+        <%= button_to '+1', upvote_pin_path(@pin), method: :post, :remote => true, :class => "vote-btn2" %>
+      <% end %>
+      <h2>Comments</h2>
+        <div id="comments">
+          <%= render :partial => @pin.comments %>
+        </div>
+        <% if user_signed_in? %>
+          <%= form_for [@pin, Comment.new] do |f| %>
+            <p>
+              <%= f.label :body, "New comment" %></br>
+              <%= f.text_area :body %>
+            </p>
+            <p><%= f.submit "Add Comment" %><p>
           <% end %>
-          <%= pluralize(@pin.votes.count, "vote") %>
-          <% if user_signed_in? %>
-            <%= button_to '+1', upvote_pin_path(@pin), method: :post, :remote => true %>
-          <% end %>
-            <h2>Comments</h2>
-              <div id="comments">
-                <%= render :partial => @pin.comments %>
-              </div>
-            <% if user_signed_in? %>
-              <%= form_for [@pin, Comment.new] do |f| %>
-                <p>
-                    <%= f.label :body, "New comment" %></br>
-                    <%= f.text_area :body %>
-                </p>
-                <p><%= f.submit "Add Comment" %><p>
-            <% end %>
-          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
+
