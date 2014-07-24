@@ -18,3 +18,4 @@
 //= require masonry/jquery.masonry
 //= require bootstrap
 //= require vote
+//= require alertify

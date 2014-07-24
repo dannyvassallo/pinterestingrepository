@@ -9,14 +9,14 @@ $(function(){
 });
 
 function incrementVotes ($el){
-  var $panel = $el.closest(".panel-body, .box")
+  var $panel = $el.closest(".panel-body")
     , $votenum = $panel.find(".votenum")
     , votesCount = parseInt($panel.find(".vote-text").data("vote"));
   $votenum.html(votesCount + 1);  
 }
 
 function getVoteIDFromButton($button) {
-  return $button.closest(".panel-body, .box").data("pin");
+  return $button.closest(".panel-body").data("pin");
 }
 
 
@@ -62,11 +62,11 @@ function fb_ui() {
     },
     function(response) {
       if (response && response.post_id) {
-        alert('Thanks for sharing! Your vote has been added.');
+        alertify.alert('Thanks for sharing! Your vote has been added.');
         fbshare(getVoteIDFromButton($btn));
         incrementVotes($btn);
       } else {
-        alert('Sorry! There was an error publishing your post. Please Try again.');
+        alertify.alert('Sorry! There was an error publishing your post. Please Try again.');
       }
     }
   );

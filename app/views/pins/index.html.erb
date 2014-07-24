@@ -3,9 +3,9 @@
 
   <div id="pins" class="transitions-enabled">
     <% @pins.each do |pin| %>
-  <div class="box panel panel-default" data-pin="<%= pin.id %>">
+  <div class="box panel panel-default">
         <%= link_to image_tag(pin.image.url(:medium)), pin %>
-        <div class="panel-body">
+        <div class="panel-body" data-pin="<%= pin.id %>">
         <p><%= pin.description %><br/></p>
         <p><strong><%= pin.user.name if pin.user %></strong></p>
             <p class="vote-text" data-vote="<%= pin.votes.count %>" > <span class="votenum"><%= pin.votes.count %></span> Votes</p>

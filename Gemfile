@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.1.0'
 
+gem 'alertify-rails'
 gem 'omniauth-facebook'
 gem 'font-awesome-rails'
 gem 'rails', '4.0.0'
