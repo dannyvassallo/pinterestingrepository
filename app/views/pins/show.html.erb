@@ -16,10 +16,12 @@
         <% end %>
       <% end %>
       <p class="vote-text" data-vote="<%= @pin.votes.count %>" ><span class="votenum"><%= @pin.votes.count %></span> Votes</p>
-      <% if user_signed_in? %>
-        <%= button_to '+1', upvote_pin_path(@pin), method: :post, :remote => true, :class => "vote-btn" %>
-        <img alt="Share This Page" class="fb-share" src="/path/to/your-image.gif"/>
-      <% end %>
+        <% if user_signed_in? %>
+          <span class="vote-block">
+            <%= link_to raw("<i class=\"fa fa-thumbs-o-up\"></i> Vote"), upvote_pin_path(@pin), method: :post, :remote => true, :class => "vote-btn" %>
+            <%= link_to raw("<i class=\"fa fa-facebook-square\"></i> Share"), sharevote_pin_path(@pin), method: :post, :remote => true, :class => "fb-share" %>
+          </span>
+        <% end %>
       <h2>Comments</h2>
         <div id="comments">
           <%= render :partial => @pin.comments %>

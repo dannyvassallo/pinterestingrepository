@@ -27,7 +27,8 @@ $jumbotron-bg: 					white;
 }
 
 .hello{
-  padding-top: 13px
+  padding-top: 13px;
+  text-indent: 13px;
 }
 
 .navbar-left{
@@ -42,8 +43,26 @@ $jumbotron-bg: 					white;
 .new_comment input{
   float: right;
 }
-@media screen and (max-width: 770px) {
-  .hello{
-  padding-top: 6px
+
+
+.vote-btn, .fb-share{
+  border-radius: 5px;
+  padding: 10px;
 }
+.fb-share, .fb-share:hover{
+  background-color: #3b5998;
+  color: #fff;
+  text-decoration: none;
+}
+.vote-btn, .vote-btn:hover{
+  background-color: #3b5998;
+  color: #fff;
+  text-decoration: none;
+}
+.vote-btn i, .fb-share i{
+  font-size: 20px;
+  padding: 10px 5px 0 0;
+}
+.actions{
+  margin-top: 20px;
 }
