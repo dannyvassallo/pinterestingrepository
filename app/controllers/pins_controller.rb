@@ -24,6 +24,7 @@ class PinsController < ApplicationController
     @pin = current_user.pins.build(pin_params)
 
       if @pin.save
+        @pin.votes.create({:user_id => current_user.id, :votetype => "vote" })
         redirect_to @pin, notice: 'Pin was successfully created.'
       else
         render action: 'new'
