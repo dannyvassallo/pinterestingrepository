@@ -5,7 +5,12 @@ class PinsController < ApplicationController
 
  def index
    require 'will_paginate/array'
-   @pins = Pin.includes(:votes).group("votes.pin_id").order("count(votes.pin_id) desc").paginate(:page => params[:page], :per_page => 25)
+   @pins =
+    Pin.includes(:votes)
+       .group("votes.pin_id")
+       .order("count(votes.pin_id) desc")
+       .paginate(:page => params[:page], :per_page => 25)
+              # .where(:published => true)
  end
 
 

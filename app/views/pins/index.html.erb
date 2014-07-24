@@ -12,7 +12,7 @@
             <% if user_signed_in? %>
             <span class="vote-block">
             <%= link_to raw("<i class=\"fa fa-thumbs-o-up\"></i> Vote"), upvote_pin_path(pin), method: :post, :remote => true, :class => "vote-btn" %>
-            <%= link_to raw("<i class=\"fa fa-facebook-square\"></i> Share"), sharevote_pin_path(pin), method: :post, :remote => true, :class => "fb-share" %>
+            <%= link_to raw("<i class=\"fa fa-facebook-square\"></i> Share"), "#" , :class => "fb-share" %>
             </span>
             <% end %>
         <% if pin.user == current_user %>

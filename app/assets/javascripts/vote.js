@@ -37,7 +37,8 @@ window.fbAsyncInit = function() {
 };
 
 // Load the SDK Asynchronously
-function fb_ui() {
+function fb_ui(e) {
+  e.preventDefault();
   var $btn = $(this);
 
 //SHARE URL//
