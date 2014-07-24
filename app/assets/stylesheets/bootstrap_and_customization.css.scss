@@ -44,20 +44,25 @@ $jumbotron-bg: 					white;
   float: right;
 }
 
-
 .vote-btn, .fb-share{
   border-radius: 5px;
   padding: 10px;
 }
-.fb-share, .fb-share:hover{
+.fb-share, .vote-btn{
   background-color: #3b5998;
   color: #fff;
   text-decoration: none;
+  border-color: #3b5998;
+  border-style: solid;
+  border-width: 2px;
 }
-.vote-btn, .vote-btn:hover{
-  background-color: #3b5998;
-  color: #fff;
+.fb-share:hover, .vote-btn:hover{
+  background-color: #fff;
+  color: #3b5998;
   text-decoration: none;
+  border-color: #3b5998;
+  border-style: solid;
+  border-width: 2px;
 }
 .vote-btn i, .fb-share i{
   font-size: 20px;
