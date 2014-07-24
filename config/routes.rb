@@ -3,6 +3,7 @@ Pinteresting::Application.routes.draw do
   resources :comments, :only => [:create]
   member do
     post 'upvote'
+    post 'sharevote'
   end
 end
 

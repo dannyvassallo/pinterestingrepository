@@ -47,12 +47,17 @@ class PinsController < ApplicationController
 
   def upvote
     @pin = Pin.find(params[:id])
-    @vote = Vote.where(:user_id => current_user.id, :pin_id => @pin.id).first
-    @pin.votes.create({:user_id => current_user.id }) unless @vote
-    redirect_to(pins_path)
-
+    @vote = Vote.where(:user_id => current_user.id, :pin_id => @pin.id, :votetype => "vote").first
+    @pin.votes.create({:user_id => current_user.id, :votetype => "vote" }) unless @vote
+    render :nothing => true
   end
 
+  def sharevote
+    @pin = Pin.find(params[:id])
+    @vote = Vote.where(:user_id => current_user.id, :pin_id => @pin.id, :votetype => "share").first
+    @pin.votes.create({:user_id => current_user.id, :votetype => "share" }) unless @vote
+    render :nothing => true
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

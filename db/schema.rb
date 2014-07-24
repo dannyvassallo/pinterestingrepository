@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140721143432) do
+ActiveRecord::Schema.define(version: 20140724162521) do
 
   create_table "comments", force: true do |t|
     t.integer  "pin_id"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20140721143432) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "votetype"
   end
 
   add_index "votes", ["pin_id"], name: "index_votes_on_pin_id"

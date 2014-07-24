@@ -9,16 +9,16 @@
       <span class="icon-bar"></span>
     </button>
     <%= link_to "Pinteresting", root_path , class: "navbar-brand" %>
-    <ul class="nav navbar-nav navbar-left">
-    <% if user_signed_in? %>
-      <li><p class="hello">Hello <%= link_to current_user.name, edit_user_registration_path %></p></li>
-<% end %>
-</ul>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
    
+<div class="nav navbar-nav navbar-left">
+  <% if user_signed_in? %>
+    <p class="hello">Hello <%= link_to current_user.name, edit_user_registration_path %></p>
+  <% end %>
+</div>  
       </li>
     </ul>
 
